@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>TetoCharts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #282828;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .search-bar input {
+            width: 300px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        .levels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+        .level-card {
+            background: #333;
+            padding: 15px;
+            width: 200px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .level-card:hover {
+            background: #444;
+        }
+    </style>
+</head>
+<body>
+    <header>TetoCharts</header>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Поиск уровней..." onkeyup="filterLevels()">
+    </div>
+
+    <div class="levels" id="levelsContainer">
+        <div class="level-card">Level 1 - Triple Baka</div>
+        <div class="level-card">Level 2 - Liar macaron</div>
+        <div class="level-card">Level 3 - Teto Territory</div>
+        <div class="level-card">Level 4 - Teto the 31st</div>
+        <div class="level-card">Level 5 - Candy Cookie Chocolate</div>
+        <!-- Тут позже добавим динамически все чарты -->
+    </div>
+
+    <script>
+        function filterLevels() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const levels = document.getElementById('levelsContainer').getElementsByClassName('level-card');
+
+            for (let i = 0; i < levels.length; i++) {
+                const levelName = levels[i].textContent.toLowerCase();
+                if (levelName.includes(input)) {
+                    levels[i].style.display = "";
+                } else {
+                    levels[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
